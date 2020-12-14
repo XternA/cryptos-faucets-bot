@@ -22,11 +22,22 @@ async function browser() {
     if (notEmpty(browserpath)) {
         return await puppeteer.launch({headless: true, executablePath: browserpath, args: args});
     }
-    return await puppeteer.launch({headless: true, args: args});
+    return await puppeteer.launch({headless: false, args: args});
 }
 
 function getJustSite(link) {
     return link.includes('/?') ? link.substring(link, (link.lastIndexOf('/?'))) : link;
+}
+
+async function useInterceptor(page, useInterceptor=true) {
+    await page.setRequestInterception(useInterceptor);
+    if (useInterceptor) {
+        page.on('request', request => {
+            if (request.resourceType() === 'image') request.abort();
+            else request.continue();
+        });
+    }
+    return useInterceptor;
 }
 
 
@@ -35,3 +46,4 @@ exports.pass = pass;
 exports.browser = browser;
 exports.puppeteer = puppeteer;
 exports.getJustSite = getJustSite;
+exports.useInterceptor = useInterceptor;
