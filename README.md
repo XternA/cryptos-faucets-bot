@@ -47,6 +47,7 @@ browserpath=/usr/bin/chromium-browser
 You need to first sign up to the Faucet site with an account before you can start claiming the coins.
 
 To make life simpler, there is a `signup.sh/.bat` script that will automatically do the registering for you. All you have to do is just execute the script. 
+
 Once the script bot signed up to all the sites, you just need to check your mail box for the email you've used in the `config.ini` and confirm the account creation otherwise the bot won't be able to claim the rewards.
 
 #### Windows
