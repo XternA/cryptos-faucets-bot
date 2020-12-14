@@ -33,8 +33,11 @@ async function useInterceptor(page, useInterceptor=true) {
     await page.setRequestInterception(useInterceptor);
     if (useInterceptor) {
         page.on('request', request => {
-            if (request.resourceType() === 'image') request.abort();
-            else request.continue();
+            if (request.resourceType() === 'image' || request.resourceType() === 'stylesheet') {
+                request.abort();
+                return;
+            }
+            request.continue();
         });
     }
     return useInterceptor;
