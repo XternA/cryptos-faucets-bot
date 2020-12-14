@@ -3,7 +3,7 @@ A faucet company offering free crypto rolls every hour from Cryptos Faucets. The
 
 This was a project developed for personal use and better left ran unattended. You can run this on your computer or server, wherever you choose to run it.
 
-The current coins that's claimed is: **`BTC  ETH  LTC  BNB  USDT  USDC  TRON  LINK  ADA  NEO  DASH  NEM  XRP`**
+The current coins that's claimed is: **BTC  ETH  LTC  BNB  USDT  USDC  TRON  LINK  ADA  NEO  DASH  NEM  XRP**
 
 ## Getting Started
 In order to run the script, you will require Node.js to be pre-installed first. The script uses a combination of [Node.js](https://nodejs.org/en), [Puppeteer](https://github.com/puppeteer/puppeteer) and [Chromium](https://www.chromium.org).
@@ -21,7 +21,7 @@ You need to first edit the `config.ini` and supply an email and password. The em
 
 #### Credentials
 Replace the section `<email>` and `<pass>` with your chosen credentials.
-```
+```ini
 [user]
 email=<email>
 pass=<pass>
@@ -35,7 +35,7 @@ For instances where the bot fails to run the bundled Chromium browser, you will 
 
 To supply the browser can be done as example syntax:  
 **Note: Your browser path may differ.**
-```
+```ini
 ### Windows ###
 browserpath=C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 
@@ -51,13 +51,13 @@ To make life simpler, there is a `signup.sh/.bat` script that will automatically
 Once the script bot signed up to all the sites, you just need to check your mail box for the email you've used in the `config.ini` and confirm the account creation otherwise the bot won't be able to claim the rewards.
 
 #### Windows
-```
+```console
 signup.bat
 ```
 
 #### Linux | macOS
 Make sure that the script is executable if it isn't.
-```
+```console
 chmod +x signup.sh
 sh signup.sh
 ```
@@ -66,16 +66,26 @@ sh signup.sh
 Running the bot is as simple as executing the `shell (Unix)` or `batch (Windows)` script.
 
 #### Windows
-```
+```console
 crypto-bot.bat
 ```
 
 #### Linux | macOS
 Make sure that the script is executable if it isn't.
-```
+```console
 chmod +x crypto-bot.sh
 sh crypto-bot.sh
 ```
+
+## Running Unattended
+Because it's a script that's ran on console level, you can set the script to run at startup. There are various ways to achieve this.
+
+### Windows
+You can use Windows' built-in Task Scheduler to make the script run at startup. You can find out how to do that **[here](https://www.thewindowsclub.com/run-batch-files-silently-on-windows)**.
+
+### Linux | macOS
+On UNIX type systems you could use a combination of **[crontab](https://help.dreamhost.com/hc/en-us/articles/215767047-Creating-a-custom-Cron-Job)** and **[screen](https://linuxize.com/post/how-to-use-linux-screen/)** to create a cron job to run on startup. You can choose not to use `screen` if you like.
+
 
 ## Support & Donations
 If you choose to register the sites manually instead and or to support the project, kindly register with my referral links. You can also share the links and the bot with others.
