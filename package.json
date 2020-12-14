@@ -1,0 +1,17 @@
+{
+  "name": "crypto-bot",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "XternA",
+  "license": "MIT",
+  "description": "Script to automatically collect coins from CryptosFaucets.",
+  "dependencies": {
+    "chrome-cookies-secure": "^1.3.2",
+    "properties-reader": "^2.1.1",
+    "puppeteer": "^5.5.0",
+    "puppeteer-select": "^1.0.3"
+  }
+}
