@@ -77,6 +77,16 @@ chmod +x crypto-bot.sh
 sh crypto-bot.sh
 ```
 
+## Running Unattended
+Because it's a script that's ran on console level, you can set the script to run at startup. There are various ways to achieve this.
+
+### Windows
+You can use Windows' built-in Task Scheduler to make the script run at startup. You can find out how to do that **[here](https://www.thewindowsclub.com/run-batch-files-silently-on-windows)**.
+
+### Linux | macOS
+On UNIX type systems you could use a combination of **[crontab](https://help.dreamhost.com/hc/en-us/articles/215767047-Creating-a-custom-Cron-Job)** and **[screen](https://linuxize.com/post/how-to-use-linux-screen/)** to create a cron job to run on startup. You can choose not to use `screen` if you like.
+
+
 ## Support & Donations
 If you choose to register the sites manually instead and or to support the project, kindly register with my referral links. You can also share the links and the bot with others.
 
