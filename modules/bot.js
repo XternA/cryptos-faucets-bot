@@ -28,8 +28,8 @@ const sites = require('./sites');
                 console.log('Website: ' + website);
 
                 // Login
-                await page.type('input[name=email]', email, {delay: 1});
-                await page.type('input[name=password]', pass, {delay: 1});
+                await page.type('input[name=email]', email, {delay: 0.3});
+                await page.type('input[name=password]', pass, {delay: 0.3});
                 const element = await select(page).getElement('button:contains(LOGIN!)');
                 await sleep(500);
                 await element.click();

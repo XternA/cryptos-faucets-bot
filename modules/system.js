@@ -1,6 +1,7 @@
 const propertiesReader = require('properties-reader');
 const configs = propertiesReader('./config.ini');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 
 const email = configs.get('user.email');
 const pass = configs.get('user.pass');
@@ -18,6 +19,7 @@ async function browser() {
         '--disable-accelerated-2d-canvas',
         '--disable-gpu'
     ];
+    puppeteer.use(StealthPlugin());
 
     if (notEmpty(browserpath)) {
         return await puppeteer.launch({headless: true, executablePath: browserpath, args: args});
@@ -30,10 +32,13 @@ function getJustSite(link) {
 }
 
 async function useInterceptor(page, useInterceptor=true) {
-    await page.setRequestInterception(useInterceptor);
     if (useInterceptor) {
+        await page.setRequestInterception(true);
         page.on('request', request => {
-            if (request.resourceType() === 'image' || request.resourceType() === 'stylesheet') {
+            function intercept(type) {return request.resourceType() === type}
+
+            if (intercept('image') || intercept('stylesheet') || intercept('media') || 
+                intercept('font') || intercept('manifest') || intercept('texttrack')) {
                 request.abort();
                 return;
             }
