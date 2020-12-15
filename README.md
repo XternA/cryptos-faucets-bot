@@ -14,7 +14,7 @@ Install Node.js: https://nodejs.org/en/download/
 Once installed, simply execute `npm i` or `npm install` in the directory of this project. Node.js's package manager will then automatically install all the required dependencies from `package.json`.
 
 ## Usage
-Running the bot is simple. First you will need to sign up to those faucet sites, then run the bot to claim the coins every hour.
+With all the pre-requisites setup and completed the rest is pretty straightforward.
 
 ### 1. Bot Configuration
 You need to first edit the `config.ini` and supply an email and password. The email and password will be used to sign up and login to claim the rewards across the sites.
@@ -46,7 +46,7 @@ browserpath=/usr/bin/chromium-browser
 ### 2. Signing Up
 You need to first sign up to the Faucet site with an account before you can start claiming the coins.
 
-To make life simpler, there is a `signup.sh/.bat` script that will automatically do the registering for you. All you have to do is just execute the script. 
+To make life simpler, there is a `signup.sh/.bat` script that will automatically do the registering for you. It will read the configuration file `config.ini` for the credentials you've provided. All you have to do is just execute the script. 
 
 Once the script bot signed up to all the sites, you just need to check your mail box for the email you've used in the `config.ini` and confirm the account creation otherwise the bot won't be able to claim the rewards.
 
