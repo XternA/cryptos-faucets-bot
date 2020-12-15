@@ -14,7 +14,7 @@ const sites = require('./sites');
     while (true) {
         const browser = await system.browser();
         const page = await browser.newPage();
-        await system.useInterceptor(page);
+        // await system.useInterceptor(page);
         await page.setViewport({width: 1800, height: 750});
 
         console.log('\n----[ ATTEMPTING SIGNUP ]----------------------------');
