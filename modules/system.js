@@ -24,7 +24,7 @@ async function browser() {
     if (notEmpty(browserpath)) {
         return await puppeteer.launch({headless: true, executablePath: browserpath, args: args});
     }
-    return await puppeteer.launch({headless: true, args: args});
+    return await puppeteer.launch({headless: false, args: args});
 }
 
 function getJustSite(link) {
@@ -38,7 +38,7 @@ async function useInterceptor(page, useInterceptor=true) {
             function intercept(type) {return request.resourceType() === type}
 
             if (intercept('image') || intercept('stylesheet') || intercept('media') || 
-                intercept('font') || intercept('manifest') || intercept('texttrack')) {
+                intercept('font') || intercept('other') || intercept('fetch')) {
                 request.abort();
                 return;
             }
