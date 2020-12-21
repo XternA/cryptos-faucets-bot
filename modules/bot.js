@@ -36,6 +36,7 @@ const sites = require('./sites');
                 
                 // Roll
                 await page.waitForNavigation();
+                await closeAds(page);
                 const canRoll = await page.evaluate(() => {return document.querySelector('.roll-wrapper').style.display !== 'none'});
                 console.log('Time:    ' + getCurrentTime(true));
                 
@@ -86,4 +87,13 @@ function getCurrentTime(includeSecs=false) {
 async function getBalance(page) {
     const innerText = await page.evaluate(() => document.querySelector('.navbar-coins').innerText);
     return 'Balance: ' + innerText;
+}
+
+async function closeAds(page) {
+    await page.evaluate(() => {
+        document.querySelectorAll('div').forEach(div => {
+            if (div.innerText === 'x') div.click();
+        });
+    });
+    await sleep(2000);
 }
