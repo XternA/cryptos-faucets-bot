@@ -42,7 +42,7 @@ const sites = require('./sites');
                 if (canRoll) {
                     const element_roll = await select(page).getElement('button:contains(ROLL!)');
                     await element_roll.click();
-                    await sleep(2600);
+                    await sleep(3000);
 
                     console.log(await getBalance(page));
                     console.log('\n\n SUCCESS! Coin claimed.\n');
