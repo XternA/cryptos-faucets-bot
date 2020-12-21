@@ -16,6 +16,9 @@ Once installed, simply execute `npm i` or `npm install` in the directory of this
 ## Usage
 With all the pre-requisites setup and completed the rest is pretty straightforward.
 
+A brief note in case you're not familiar with command line or terminal usage. On Windows, you can simply run the `.bat` file or via Command Prompt by typing in the command.
+On Linux and macOS, you will need to run the `.sh` file via a Terminal.
+
 ### 1. Bot Configuration
 You need to first edit the `config.ini` and supply an email and password. The email and password will be used to sign up and login to claim the rewards across the sites.
 
