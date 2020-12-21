@@ -38,8 +38,9 @@ const sites = require('./sites');
                 await page.waitForNavigation();
                 const canRoll = await page.evaluate(() => {return document.querySelector('.roll-wrapper').style.display !== 'none'});
                 console.log('Time:    ' + getCurrentTime(true));
-
+                
                 if (canRoll) {
+                    await autoScroll(page);
                     const element_roll = await select(page).getElement('button:contains(ROLL!)');
                     await element_roll.click();
                     await sleep(3000);
@@ -86,4 +87,22 @@ function getCurrentTime(includeSecs=false) {
 async function getBalance(page) {
     const innerText = await page.evaluate(() => document.querySelector('.navbar-coins').innerText);
     return 'Balance: ' + innerText;
+}
+
+async function autoScroll(page) {
+    await page.evaluate(async () => {
+        await new Promise(resolve => {
+            let height = 0;
+            const timer = setInterval(() => {
+                const distance = 150;
+                window.scrollBy(0, distance);
+                height += distance;
+
+                if (height >= document.body.scrollHeight) {
+                    clearInterval(timer);
+                    resolve();
+                }
+            }, 100);
+        });
+    });
 }
