@@ -24,7 +24,7 @@ async function browser() {
     if (notEmpty(browserpath)) {
         return await puppeteer.launch({headless: true, executablePath: browserpath, args: args});
     }
-    return await puppeteer.launch({headless: false, args: args});
+    return await puppeteer.launch({headless: true, args: args});
 }
 
 function getJustSite(link) {
