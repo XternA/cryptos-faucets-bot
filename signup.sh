@@ -1,7 +1,9 @@
 #!/bin/sh
 
+NODE=`which node`
+
 run() {
-    clear && node modules/signup.js
+    clear && $NODE modules/signup.js
 }
 
 UNAME=$( command -v uname)

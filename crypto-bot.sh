@@ -1,8 +1,10 @@
 #!/bin/sh
 
+NODE=`which node`
+
 run() {
   while true; do
-    clear && node modules/bot.js
+    clear && $NODE modules/bot.js
     sleep 3
   done
 }
