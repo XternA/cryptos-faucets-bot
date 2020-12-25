@@ -57,8 +57,7 @@ const sites = require('./sites');
                     someClaimed = true;
                 }
             } catch (e) {
-                const message = '\nError was encountered on: ' + website;
-                console.log(message);
+                console.log('\nError was encountered on: ' + website);
                 console.error('Error: ' + e.message);
                 console.log('\n\n FAILED! Coin not claimed.\n');
                 failedAttempt = true;
@@ -97,8 +96,7 @@ function getCurrentTime(includeSecs=false) {
 }
 
 async function getBalance(page) {
-    const innerText = await page.evaluate(() => document.querySelector('.navbar-coins').innerText);
-    return 'Balance: ' + innerText;
+    return 'Balance: ' + await page.evaluate(() => document.querySelector('.navbar-coins').innerText);
 }
 
 async function getCountdownSeconds(page) {
