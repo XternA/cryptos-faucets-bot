@@ -20,6 +20,8 @@ const sites = require('./sites');
         console.log('Attempt: ' + getCurrentTime() + '\n');
 
         let failedAttempt = false;
+        let someClaimed = false;
+        let awaitTimer = 0;
         for (let i = 0; i < websites.length; ++i) {
             const website = system.getJustSite(websites[i]);
             try {
@@ -37,7 +39,7 @@ const sites = require('./sites');
                 // Roll
                 await page.waitForNavigation();
                 await closeAds(page);
-                const canRoll = await page.evaluate(() => {return document.querySelector('.roll-wrapper').style.display !== 'none'});
+                const canRoll = await page.evaluate(() => document.querySelector('.roll-wrapper').style.display !== 'none');
                 console.log('Time:    ' + getCurrentTime(true));
                 
                 if (canRoll) {
@@ -50,6 +52,9 @@ const sites = require('./sites');
                 } else {
                     console.log(await getBalance(page));
                     console.log('\n\n Coin already claimed.\n');
+                    const waitTime = await getCountdownSeconds(page);
+                    awaitTimer = (waitTime > awaitTimer) ? waitTime : awaitTimer;
+                    someClaimed = true;
                 }
             } catch (e) {
                 const message = '\nError was encountered on: ' + website;
@@ -67,8 +72,15 @@ const sites = require('./sites');
             await sleep(60000);
         } else {
             console.log('### All coins collected succesfully ###############');
-            console.log('\n Restarting claim in an hour... zzz zz z\n\n');
-            await sleep(3600000);
+            if (someClaimed) {
+                const time = awaitTimer > 60 ? `${parseInt(awaitTimer / 60)} min` : `${awaitTimer} seconds`;
+                console.log('\n Restarting available claim in ' + time + '... zzz zz z\n\n');
+                someClaimed = false;
+                await sleep(awaitTimer * 1000);
+            } else {
+                console.log('\n Restarting claim in an hour... zzz zz z\n\n');
+                await sleep(3600000);
+            }
         }
     }
 })();
@@ -87,6 +99,11 @@ function getCurrentTime(includeSecs=false) {
 async function getBalance(page) {
     const innerText = await page.evaluate(() => document.querySelector('.navbar-coins').innerText);
     return 'Balance: ' + innerText;
+}
+
+async function getCountdownSeconds(page) {
+    const countdownTimer = await page.evaluate(() => document.querySelector('.timeout-container').innerText.split(`\n`));
+    return Math.floor(parseInt(countdownTimer[0]) * 60) + parseInt(countdownTimer[2]);
 }
 
 async function closeAds(page) {
