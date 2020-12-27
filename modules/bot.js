@@ -25,8 +25,8 @@ const sites = require('./sites');
         for (let i = 0; i < websites.length; ++i) {
             const website = system.getJustSite(websites[i]);
             try {
-                await page.goto(websites[i]);
-                await sleep(700);
+                await page.goto(websites[i], {waitUntil: 'domcontentloaded'});
+                await sleep(6300);
                 console.log('Website: ' + website);
 
                 // Login
