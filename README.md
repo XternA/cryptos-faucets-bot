@@ -11,7 +11,7 @@ In order to run the script, you will require Node.js to be pre-installed first. 
 ### Prerequisites
 Install Node.js: https://nodejs.org/en/download/
 
-Once installed, simply execute `npm i` or `npm install` in the directory of this project. Node.js's package manager will then automatically install all the required dependencies from `package.json`.
+Once installed, using the `Terminal` (Linux/macOS) or `Command Prompt` (Windows), simply execute `npm i` or `npm install` in the directory of this project. Node.js's package manager will then automatically install all the required dependencies from `package.json`.
 
 ## Usage
 With all the pre-requisites setup and completed the rest is pretty straightforward.
