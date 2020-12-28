@@ -25,11 +25,12 @@ const sites = require('./sites');
         for (let i = 0; i < websites.length; ++i) {
             const website = system.getJustSite(websites[i]);
             try {
-                await page.goto(websites[i]);
+                await page.goto(websites[i], {waitUntil: 'domcontentloaded'});
                 await sleep(700);
                 console.log('Website: ' + website);
 
                 // Login
+                await page.waitForSelector('input[name=email]');
                 await page.type('input[name=email]', email, {delay: 0.3});
                 await page.type('input[name=password]', pass, {delay: 0.3});
                 const element = await select(page).getElement('button:contains(LOGIN!)');
