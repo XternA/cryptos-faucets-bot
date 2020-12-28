@@ -5,6 +5,8 @@ This was a project developed for personal use and better left ran unattended. Yo
 
 The current coins that's claimed is: **BTC  ETH  LTC  BNB  USDT  USDC  TRON  LINK  ADA  NEO  DASH  NEM  XRP**
 
+The bot also is capable of applying promo codes that **[Crypto Faucets](https://twitter.com/cryptosfaucets)** occasically publishes, provided the code hasn't been applied to the account before. This allows the account to gain additional coin claims and reset the wait counter.
+
 ## Getting Started
 In order to run the script, you will require Node.js to be pre-installed first. The script uses a combination of [Node.js](https://nodejs.org/en), [Puppeteer](https://github.com/puppeteer/puppeteer) and [Chromium](https://www.chromium.org).
 
