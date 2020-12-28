@@ -48,6 +48,13 @@ async function useInterceptor(page, useInterceptor=true) {
     return useInterceptor;
 }
 
+function getCurrentTime(includeSecs=false) {
+    function format(source) {return source < 10 ? '0' + source : source}
+    const today = new Date();
+    const time = format(today.getHours()) + ':' + format(today.getMinutes());
+    return includeSecs ? (time + ':' + format(today.getSeconds())) : time;
+}
+
 
 exports.email = email;
 exports.pass = pass;
@@ -55,3 +62,4 @@ exports.browser = browser;
 exports.puppeteer = puppeteer;
 exports.getJustSite = getJustSite;
 exports.useInterceptor = useInterceptor;
+exports.getCurrentTime = getCurrentTime
