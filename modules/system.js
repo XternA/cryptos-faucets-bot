@@ -31,21 +31,23 @@ function getJustSite(link) {
     return link.includes('/?') ? link.substring(link, (link.lastIndexOf('/?'))) : link;
 }
 
-async function useInterceptor(page, useInterceptor=true) {
-    if (useInterceptor) {
-        await page.setRequestInterception(true);
-        page.on('request', request => {
-            function intercept(type) {return request.resourceType() === type}
+async function useInterceptor(page, skipRequests=[]) {
+    await page.setRequestInterception(true);
+    page.on('request', request => {
+        const list = ['image', 'stylesheet', 'media', 'font', 'other', 'fetch', 'manifetst'];
+        const type = request.resourceType();
 
-            if (intercept('image') || intercept('stylesheet') || intercept('media') || 
-                intercept('font') || intercept('other') || intercept('fetch')) {
-                request.abort();
-                return;
-            }
+        if (skipRequests.includes(type)) {
             request.continue();
-        });
-    }
-    return useInterceptor;
+            return;
+        }
+
+        if (list.includes(type)) {
+            request.abort();
+            return;
+        }
+        request.continue();
+    });
 }
 
 function getCurrentTime(includeSecs=false) {
