@@ -18,16 +18,16 @@ const sites = require('./sites');
         await page.setViewport({width: 1800, height: 750});
 
         console.log('\n----[ ATTEMPTING SIGNUP ]----------------------------');
-        console.log('Attempt: ' + getCurrentTime() + '\n');
+        console.log('Attempt: ' + system.getCurrentTime() + '\n');
 
         let failedAttempt = false;
         for (let i = 0; i < websites.length; ++i) {
             const website = system.getJustSite(websites[i]);
             try {
-                await page.goto(websites[i]);
+                await page.goto(websites[i], {waitUntil: 'domcontentloaded'});
                 await sleep(700);
                 console.log('Website: ' + website);
-                console.log('Time:    ' + getCurrentTime());
+                console.log('Time:    ' + system.getCurrentTime());
 
                 // Register
                 const register = await select(page).getElement('a.register-link');
@@ -75,12 +75,6 @@ const sites = require('./sites');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function getCurrentTime() {
-    function format(source) {return source < 10 ? '0' + source : source}
-    const today = new Date();
-    return format(today.getHours()) + ':' + format(today.getMinutes()) + ':' + format(today.getSeconds());
 }
 
 async function checkAccountExist(page) {
