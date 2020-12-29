@@ -79,7 +79,11 @@ function sleep(ms) {
 
 async function checkAccountExist(page) {
     return await page.evaluate(() => {
+        const existText = [
+            'You cannot create more than one account',
+            'The email has already been taken.'
+        ]
         const elem = document.querySelectorAll('.error');
-        return elem.length ===0 ? false : (elem[1].innerText === 'You cannot create more than one account');
+        return elem.length ===0 ? false : existText.includes(elem[1].innerText);
     });
 }
