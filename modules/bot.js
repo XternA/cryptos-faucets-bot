@@ -27,7 +27,7 @@ const promo = require('./promo');
         for (let i = 0; i < websites.length; ++i) {
             const website = system.getJustSite(websites[i]);
             try {
-                await page.goto(websites[i], {waitUntil: 'domcontentloaded'});
+                await page.goto(websites[i], {waitUntil: 'load'});
                 await sleep(700);
                 console.log('Website: ' + website);
 
