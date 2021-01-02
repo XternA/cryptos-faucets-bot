@@ -108,8 +108,11 @@ async function closeAds(page) {
 }
 
 async function roll(page) {
-    const element_roll = await select(page).getElement('button:contains(ROLL!)');
-    await element_roll.click();
+    await page.evaluate(() => {
+        document.querySelectorAll('button').forEach(div => {
+            if (div.innerText === 'ROLL!') div.click(); return;
+        });
+    });
     await sleep(3000);
 }
 
