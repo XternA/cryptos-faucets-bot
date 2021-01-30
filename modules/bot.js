@@ -15,6 +15,7 @@ const promo = require('./promo');
         const browser = await system.browser();
         const promoCodes = await promo.getPromoCodes(await browser.newPage());
         const page = await browser.newPage();
+        await page.setDefaultNavigationTimeout(60000);
         await system.useInterceptor(page);
         await page.setViewport({width: 1800, height: 750});
     
@@ -108,8 +109,11 @@ async function closeAds(page) {
 }
 
 async function roll(page) {
-    const element_roll = await select(page).getElement('button:contains(ROLL!)');
-    await element_roll.click();
+    await page.evaluate(() => {
+        document.querySelectorAll('button').forEach(div => {
+            if (div.innerText === 'ROLL!') div.click(); return;
+        });
+    });
     await sleep(3000);
 }
 

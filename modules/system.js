@@ -13,28 +13,30 @@ function notEmpty(prop) {
 
 async function browser() {
     const args = [ 
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
         '--disable-accelerated-2d-canvas',
-        '--disable-gpu'
+        '--disable-gpu',
+        '--disable-session-crashed-bubble',
+        '--no-default-browser-check',
+        '--disable-extensions',
+        '--ignore-certifcate-errors',
+        '--ignore-certifcate-errors-spki-list'
     ];
     puppeteer.use(StealthPlugin());
 
     if (notEmpty(browserpath)) {
-        return await puppeteer.launch({headless: true, executablePath: browserpath, args: args});
+        return await puppeteer.launch({headless: true, ignoreHTTPSErrors: true, executablePath: browserpath, args: args});
     }
-    return await puppeteer.launch({headless: true, args: args});
+    return await puppeteer.launch({headless: true, ignoreHTTPSErrors: true, args: args});
 }
 
 function getJustSite(link) {
     return link.includes('/?') ? link.substring(link, (link.lastIndexOf('/?'))) : link;
 }
 
-async function useInterceptor(page, skipRequests=[]) {
+async function useInterceptor(page, skipRequests=[], includeRequests=[]) {
     await page.setRequestInterception(true);
     page.on('request', request => {
-        const list = ['image', 'stylesheet', 'media', 'font', 'other', 'fetch', 'manifetst'];
+        const list = ['image', 'stylesheet', 'media', 'font', 'other', 'fetch', 'manifest'];
         const type = request.resourceType();
 
         if (skipRequests.includes(type)) {
@@ -42,7 +44,7 @@ async function useInterceptor(page, skipRequests=[]) {
             return;
         }
 
-        if (list.includes(type)) {
+        if (list.includes(type) || includeRequests.includes(type)) {
             request.abort();
             return;
         }
@@ -64,4 +66,4 @@ exports.browser = browser;
 exports.puppeteer = puppeteer;
 exports.getJustSite = getJustSite;
 exports.useInterceptor = useInterceptor;
-exports.getCurrentTime = getCurrentTime
+exports.getCurrentTime = getCurrentTime;
