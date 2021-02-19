@@ -1,6 +1,11 @@
 const system = require('./system');
 
 async function getPromoCodes(page) {
+    if (!system.configs.get('platform.checkpromo')) {
+        page.close(); 
+        return [];
+    }
+
     const website = 'https://twitter.com/cryptosfaucets';
     
     console.log('\n----[ CHECK FOR PROMO CODES ]----------------------');

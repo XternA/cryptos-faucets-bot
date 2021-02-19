@@ -63,6 +63,7 @@ function getCurrentTime(includeSecs=false) {
 }
 
 
+exports.configs = configs;
 exports.email = email;
 exports.pass = pass;
 exports.browser = browser;

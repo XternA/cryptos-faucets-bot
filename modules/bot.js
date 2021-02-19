@@ -122,7 +122,7 @@ async function canRoll(page) {
 }
 
 async function attemptPromoCodes(page, promoCodes) {
-    if (promoCodes.length < 0) return;
+    if (promoCodes.length === 0) return;
     
     console.log(' Attempting promo codes.');
 
