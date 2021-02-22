@@ -28,11 +28,12 @@ const promo = require('./promo');
         for (let i = 0; i < websites.length; ++i) {
             const website = system.getJustSite(websites[i]);
             try {
-                await page.goto(websites[i], {waitUntil: 'load'});
+                await page.goto(websites[i], {waitUntil: 'networkidle2'});
                 await sleep(700);
                 console.log('Website: ' + website);
 
                 // Login
+                await autoScroll(page);
                 await page.waitForSelector('input[name=email]');
                 await page.type('input[name=email]', email, {delay: 0.3});
                 await page.type('input[name=password]', pass, {delay: 0.3});
@@ -147,4 +148,16 @@ async function attemptPromoCodes(page, promoCodes) {
     };
     console.log(' All promo codes attempted.\n');
     console.log('Final ' + await getBalance(page) + '\n');
+}
+
+async function autoScroll(page) {
+    await page.evaluate(async () => {
+        await new Promise(resolve => {
+            const timer = setTimeout(() => {
+                window.scrollBy(0, 100);
+                clearInterval(timer);
+                resolve();
+            }, 100);
+        });
+    });
 }
