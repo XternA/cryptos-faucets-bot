@@ -29,7 +29,7 @@ async function browser() {
     if (notEmpty(browserpath)) {
         return await puppeteer.launch({headless: true, ignoreHTTPSErrors: true, executablePath: browserpath, args: args});
     }
-    return await puppeteer.launch({headless: true, ignoreHTTPSErrors: true, args: args});
+    return await puppeteer.launch({headless: false, ignoreHTTPSErrors: true, args: args});
 }
 
 function getJustSite(link) {
@@ -46,8 +46,25 @@ async function useInterceptor(page, skipRequests=[], includeRequests=[]) {
             request.continue();
             return;
         }
-
-        if (list.includes(type) || includeRequests.includes(type)) {
+        
+        urlFilters = [
+            'clicksor',
+            'doubleclick',
+            'fontawesome',
+            'google-analytics',
+            'googlesyndication',
+            'googleapis',
+            'analytics',
+            'optimizely',
+            'a-ads',
+            'exoprsdds',
+            'imgur',
+            'adclerks',
+            'iconfont',
+            'googletagmanager'
+        ].some(resource => request.url().includes(resource));
+        
+        if (list.includes(type) || includeRequests.includes(type) || urlFilters) {
             request.abort();
             return;
         }
