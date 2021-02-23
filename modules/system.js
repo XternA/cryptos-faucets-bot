@@ -29,7 +29,7 @@ async function browser() {
     if (notEmpty(browserpath)) {
         return await puppeteer.launch({headless: true, ignoreHTTPSErrors: true, executablePath: browserpath, args: args});
     }
-    return await puppeteer.launch({headless: false, ignoreHTTPSErrors: true, args: args});
+    return await puppeteer.launch({headless: true, ignoreHTTPSErrors: true, args: args});
 }
 
 function getJustSite(link) {
