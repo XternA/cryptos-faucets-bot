@@ -29,22 +29,23 @@ const promo = require('./promo');
             const website = system.getJustSite(websites[i]);
             try {
                 await page.goto(websites[i], {waitUntil: 'networkidle2'});
-                await sleep(700);
+                await sleep(200);
                 console.log('Website: ' + website);
 
                 // Login
-                await autoScroll(page);
                 await page.waitForSelector('input[name=email]');
-                await page.type('input[name=email]', email, {delay: 0.3});
-                await page.type('input[name=password]', pass, {delay: 0.3});
+                await page.type('input[name=email]', email);
+                await page.type('input[name=password]', pass);
                 const element = await select(page).getElement('button:contains(LOGIN!)');
-                await sleep(500);
+                await autoScroll(page);
+                await closeAds(page);
                 await element.click();
                 
                 // Roll
-                await page.waitForNavigation();
-                await closeAds(page);
+                await page.waitForNavigation({waitUntil: 'networkidle2'});
                 console.log('Time:    ' + system.getCurrentTime(true));
+                await autoScroll(page);
+                await closeAds(page);
                 
                 if (await canRoll(page)) {
                     await roll(page);
@@ -101,12 +102,11 @@ async function getCountdownSeconds(page) {
 }
 
 async function closeAds(page) {
+    await sleep(1000);
     await page.evaluate(() => {
-        document.querySelectorAll('div').forEach(div => {
-            if (div.innerText === 'x') div.click();
-        });
+        document.querySelectorAll('.d-lg-block').forEach(div => div.remove());
+        document.querySelectorAll('div').forEach(div => {if (div.innerText === 'x') div.click()});
     });
-    await sleep(2000);
 }
 
 async function roll(page) {
@@ -141,7 +141,8 @@ async function attemptPromoCodes(page, promoCodes) {
             const homeLink = await select(page).getElement('a.nav-link');
             await homeLink.click();
             await page.waitForNavigation();
-            await sleep(700);
+            await autoScroll(page);
+            await closeAds(page);
 
             if (await canRoll(page)) await roll(page);
         }
@@ -153,10 +154,17 @@ async function attemptPromoCodes(page, promoCodes) {
 async function autoScroll(page) {
     await page.evaluate(async () => {
         await new Promise(resolve => {
-            const timer = setTimeout(() => {
-                window.scrollBy(0, 100);
-                clearInterval(timer);
-                resolve();
+            let totalHeight = 0;
+            const distance = 400;
+            const timer = setInterval(() => {
+                const scrollHeight = document.body.scrollHeight;
+                window.scrollBy(0, distance);
+                totalHeight += distance;
+      
+                if (totalHeight >= scrollHeight) {
+                    clearInterval(timer);
+                    resolve();
+                }
             }, 100);
         });
     });

@@ -46,7 +46,7 @@ async function useInterceptor(page, skipRequests=[], includeRequests=[]) {
             request.continue();
             return;
         }
-        
+
         urlFilters = [
             'clicksor',
             'doubleclick',
@@ -56,12 +56,11 @@ async function useInterceptor(page, skipRequests=[], includeRequests=[]) {
             'googleapis',
             'analytics',
             'optimizely',
-            'a-ads',
-            'exoprsdds',
             'imgur',
-            'adclerks',
             'iconfont',
-            'googletagmanager'
+            'googletagmanager',
+            'app.css',
+            'cdn'
         ].some(resource => request.url().includes(resource));
         
         if (list.includes(type) || includeRequests.includes(type) || urlFilters) {
