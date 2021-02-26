@@ -119,8 +119,8 @@ LTC - LNUtbLV4CLYJUCPfRm4pooaeHASBRaKnnP
 [![BNB](https://freebinancecoin.com/img/freebinancecoin/banners/Banner468x60.jpg)](https://freebinancecoin.com/?ref=72163)  
 **BNB - https://freebinancecoin.com/?ref=72163**  
 
-[![LINK](https://freechain.link/img/freechain/banners/Banner468x60.jpg)](https://freechain.link/?ref=34381)  
-**LINK - https://freechain.link/?ref=34381**  
+[![LINK](https://freechainlink.io/img/freechain/banners/Banner468x60.jpg)](https://freechainlink.io/?ref=34381)  
+**LINK - https://freechainlink.io/?ref=34381**  
 
 [![NEO](https://freeneo.io/img/freeneo/banners/Banner468x60.jpg)](https://freeneo.io/?ref=39047)  
 **NEO - https://freeneo.io/?ref=39047**  
