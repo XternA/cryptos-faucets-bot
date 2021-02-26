@@ -37,9 +37,9 @@ const sites = require('./sites');
                 const email_elem = await page.$$('input[name=email]');
                 const pass_elem = await page.$$('input[name=password]');
 
-                await email_elem[1].type(email, {delay: 1});
-                await pass_elem[1].type(pass, {delay: 1});
-                await page.type('input[name=confirm-password]', pass, {delay: 1});
+                await email_elem[1].type(email);
+                await pass_elem[1].type(pass);
+                await page.type('input[name=confirm-password]', pass);
                 const element = await select(page).getElement('button:contains(REGISTER!)');
                 await sleep(500);
                 await element.click();
@@ -48,7 +48,6 @@ const sites = require('./sites');
                 if (await checkAccountExist(page)) {
                     console.log(`\n Email ${email} already registered.\n`);
                 } else {
-                    await page.waitForNavigation();
                     console.log(`\n Successfully registered ${email}\n`);
                 }
             } catch (e) {
