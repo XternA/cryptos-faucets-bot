@@ -9,6 +9,7 @@ exports.websites = [
     'https://freeneo.io/?ref=39047',
     'https://freecardano.com/?ref=249042',
     'https://free-tron.com/?ref=100636',
+    'https://free-doge.com/?ref=14646',
     'https://freedash.io/?ref=54242',
     'https://coinfaucet.io/?ref=698164',
     'https://freenem.com/?ref=251426'
