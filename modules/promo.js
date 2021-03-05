@@ -25,7 +25,7 @@ async function getPromoCodes(page) {
             elem = item.innerText;
             if (elem.includes('FREE ROLL PROMO CODE')) {
                 elem = elem.slice(59, elem.length).replace(/(=\s)/g, '').split('\nValid until ');
-                elem[1] = Date.parse(elem[1].replace(/[(am)(pm)(GMT)]/g, '').trim());
+                elem[1] = Date.parse(elem[1].replace(/[(am)(pm)]/g, '').trim());
                 promoCodes.push(elem);
             }
         }
