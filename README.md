@@ -3,7 +3,7 @@ A faucet company offering free crypto rolls every hour from Cryptos Faucets. The
 
 This was a project developed for personal use and better left ran unattended. You can run this on your computer or server, wherever you choose to run it.
 
-The current coins that's claimed is: **BTC  ETH  LTC  BNB  USDT  USDC  TRON  LINK  ADA  NEO  DASH  NEM  XRP**
+The current coins that's claimed is: **BTC  ETH  LTC  BNB  USDT  USDC  TRON  LINK  ADA  DOGE  NEO  DASH  NEM  XRP**
 
 The bot also is capable of applying promo codes that **[Crypto Faucets](https://twitter.com/cryptosfaucets)** occasically publishes, provided the code hasn't been applied to the account before. This allows the account to gain additional coin claims and reset the wait counter.
 
@@ -127,6 +127,9 @@ LTC - LNUtbLV4CLYJUCPfRm4pooaeHASBRaKnnP
 
 [![ADA](https://freecardano.com/img/freecardano/banners/Banner468x60.jpg)](https://freecardano.com/?ref=249042)  
 **ADA - https://freecardano.com/?ref=249042**  
+
+[![DOGE](https://free-doge.com/img/freedoge/banners/Banner468x60.jpg)](https://free-doge.com/?ref=14646)  
+**DOGE - https://freecardano.com/?ref=249042**  
 
 [![TRON](https://free-tron.com/img/freetron/banners/Banner468x60.jpg)](https://free-tron.com/?ref=100636)  
 **TRON - https://free-tron.com/?ref=100636**  
