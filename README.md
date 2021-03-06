@@ -82,6 +82,28 @@ chmod +x crypto-bot.sh
 sh crypto-bot.sh
 ```
 
+### 4. Updating
+When changes have been pushed out, you can update the bots to the latest from this repository by invoking `git pull` from the main directory. 
+
+In the event that the command failed due to your local changes conflicting, you will need to reset the local changes to default and then pull the latest changes. You can do this with `git reset --hard`. This will revert all changes and you can proceed with pulling the new changes. Note that resetting means you need to re-configure your `config.ini` again.
+
+If after updating, the bot fails when attempting to run, simply remove the `node_modules` completely and re-install the required modules with `npm i`.
+
+To remove the node modules from `Terminal` or `Command Prompt`, invoke:
+
+#### Linux | macOS
+```console
+rm -rf node_modules
+```
+
+#### Windows
+```console
+rd /q/s node_modules
+```
+
+#### New Faucets Added
+In addition to updates, there may occasionally be new faucets added. If that's the case, after you've update the bots, you can simply run the `signup-bot.sh/bat` script to register any new faucets that have been added.
+
 ## Running Unattended
 Because it's a script that's ran on console level, you can set the script to run at startup. There are various ways to achieve this.
 
