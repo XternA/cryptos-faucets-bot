@@ -101,8 +101,8 @@ rm -rf node_modules
 rd /q/s node_modules
 ```
 
-#### New Faucets Added
-In addition to updates, there may occasionally be new faucets added. If that's the case, after you've update the bots, you can simply run the `signup-bot.sh/bat` script to register any new faucets that have been added.
+### New Faucets Added
+In addition to updates, there may occasionally be new faucets added. If that's the case, after you've update the bots, you can simply run the `signup.sh/bat` script to register any new faucets that have been added.
 
 ## Running Unattended
 Because it's a script that's ran on console level, you can set the script to run at startup. There are various ways to achieve this.
