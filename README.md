@@ -120,7 +120,7 @@ If you choose to register the sites manually instead and or to support the proje
 **I also accept donations:**  
 - **BTC:** bc1qq993w3mxsf5aph5c362wjv3zaegk37tcvw7rl4
 - **ETH:** 0x2601B9940F9594810DEDC44015491f0f9D6Dd1cA
-- **PayPal:** @xterna
+- **PayPal:** [@xterna](@xterna)
 
 #### Referrals to Faucet
 [![BTC](https://freebitcoin.io/img/freebitcoin/banners/Banner468x60.jpg)](https://freebitcoin.io/?ref=366602)  
