@@ -117,10 +117,10 @@ On UNIX type systems you could use a combination of **[crontab](https://help.dre
 ## Support & Donations
 If you choose to register the sites manually instead and or to support the project, kindly register with my referral links. You can also share the links and the bot with others.
 
-**I also accept crypto donations:**  
-BTC - bc1qjrlzpy4hjhnj6436fwkmzmr2a36r29s0ngy9cu  
-ETH - 0xE03f7BDAC29D0095a1DD07133731C91b100f0999  
-LTC - LNUtbLV4CLYJUCPfRm4pooaeHASBRaKnnP  
+**I also accept donations:**  
+BTC: bc1qq993w3mxsf5aph5c362wjv3zaegk37tcvw7rl4
+ETH: 0x2601B9940F9594810DEDC44015491f0f9D6Dd1cA
+PayPal: @xterna
 
 #### Referrals to Faucet
 [![BTC](https://freebitcoin.io/img/freebitcoin/banners/Banner468x60.jpg)](https://freebitcoin.io/?ref=366602)  
